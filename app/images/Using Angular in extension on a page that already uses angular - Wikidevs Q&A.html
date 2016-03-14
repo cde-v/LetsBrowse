@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<!-- saved from url=(0089)http://www.wikidevs.com/2389/using-angular-in-extension-on-page-that-already-uses-angular -->
+<html data-ng-non-bindable=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>
+<meta charset="utf-8">
+<title>Using Angular in extension on a page that already uses angular - Wikidevs Q&amp;A</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="I&#39;m writing a Chrome Extension (here) for my library that uses angular for its UI. It works great  ... extension&#39;)[0], [&#39;genie-extension&#39;]);  Thanks!">
+<meta name="keywords" content="javascript,angularjs,google-chrome,google-chrome-extension,question">
+<link rel="stylesheet" href="./Using Angular in extension on a page that already uses angular - Wikidevs Q&A_files/qa-styles.css">
+<link rel="stylesheet" href="./Using Angular in extension on a page that already uses angular - Wikidevs Q&A_files/css">
+<style>.qa-nav-user{margin:0!important;}@media (max-width: 979px) {body.qa-template-user.fixed,body[class*="qa-template-user-"].fixed{padding-top:118px!important;}body.qa-template-users.fixed{padding-top:95px!important;}}@media (min-width: 980px) {body.qa-template-users.fixed{padding-top:105px!important;}}.qa-sidepanel{width:25%;padding:0px;float:right;overflow:hidden;*zoom:1;}</style>
+<link rel="canonical" href="http://www.wikidevs.com/2389/using-angular-in-extension-on-page-that-already-uses-angular">
+<link rel="search" type="application/opensearchdescription+xml" title="Wikidevs Q&amp;A" href="http://www.wikidevs.com/opensearch.xml">
+<script>
+		var qa_root = '..\/';
+		var qa_request = '2389\/using-angular-in-extension-on-page-that-already-uses-angular';
+		</script>
+<script src="./Using Angular in extension on a page that already uses angular - Wikidevs Q&A_files/jquery-1.11.2.min.js"></script>
+<script src="./Using Angular in extension on a page that already uses angular - Wikidevs Q&A_files/qa-page.js"></script>
+<script src="./Using Angular in extension on a page that already uses angular - Wikidevs Q&A_files/qa-question.js"></script>
+<script src="./Using Angular in extension on a page that already uses angular - Wikidevs Q&A_files/snow-core.js"></script>
+<script type="text/javascript">
+			if (typeof qa_wysiwyg_editor_config == 'object')
+				qa_wysiwyg_editor_config.skin='moono';
+		</script>
+</head>
+<body class="qa-template-question qa-body-js-on" data-ng-controller="LetsBrowseCtrl as ctrl">
+<script>
+			var b=document.getElementsByTagName('body')[0];
+			b.className=b.className.replace('qa-body-js-off', 'qa-body-js-on');
+		</script>
+<div id="qam-topbar" class="clearfix">
+<div class="qam-main-nav-wrapper clearfix">
+<div class="sb-toggle-left qam-menu-toggle"><i class="icon-th-list"></i></div>
+<div class="qam-account-items-wrapper">
+<div id="qam-account-toggle" class="qam-logged-out">
+<i class="icon-key qam-auth-key"></i>
+<div class="qam-account-handle">Login</div>
+</div>
+<div class="qam-account-items clearfix">
+ 
+<form id="qa-loginform" action="http://www.wikidevs.com/login?to=2389%2Fusing-angular-in-extension-on-page-that-already-uses-angular" method="post">
+<input type="text" id="qa-userid" name="emailhandle" placeholder="Email or Username">
+<input type="password" id="qa-password" name="password" placeholder="Password">
+<div id="qa-rememberbox"><input type="checkbox" name="remember" id="qa-rememberme" value="1">
+<label for="qa-rememberme" id="qa-remember">Remember</label></div>
+<input type="hidden" name="code" value="0-1457909815-c43648cff24a7578db16623b75eb20ed24769b1c">
+<input type="submit" value="Login" id="qa-login" name="dologin">
+</form>
+ 
+<div class="qa-nav-user">
+<ul class="qa-nav-user-list">
+<li class="qa-nav-user-item qa-nav-user-register">
+<a href="http://www.wikidevs.com/register?to=2389%2Fusing-angular-in-extension-on-page-that-already-uses-angular" class="qa-nav-user-link">Register</a>
+</li>
+</ul>
+<div class="qa-nav-user-clear">
+</div>
+</div>
+</div>  
+</div>  
+<div class="qa-logo">
+<a href="http://www.wikidevs.com/" class="qa-logo-link">Wikidevs Q&amp;A</a>
+</div>
+<div class="qa-nav-main">
+<ul class="qa-nav-main-list">
+<li class="qa-nav-main-item qa-nav-main-activity">
+<a href="http://www.wikidevs.com/activity" class="qa-nav-main-link">All Activity</a>
+</li>
+<li class="qa-nav-main-item qa-nav-main-questions">
+<a href="http://www.wikidevs.com/questions" class="qa-nav-main-link">Questions</a>
+</li>
+<li class="qa-nav-main-item qa-nav-main-tag">
+<a href="http://www.wikidevs.com/tags" class="qa-nav-main-link">Tags</a>
+</li>
+<li class="qa-nav-main-item qa-nav-main-ask">
+<a href="http://www.wikidevs.com/ask" class="qa-nav-main-link">Ask a Question</a>
+</li>
+<li class="qa-nav-main-item qa-nav-main-custom-1">
+<a href="http://www.wikidevs.com/tag/article" class="qa-nav-main-link">Article</a>
+</li>
+</ul>
+<div class="qa-nav-main-clear">
+</div>
+</div>
+</div>  
+</div> 
+<div class="qam-search turquoise the-top" id="the-top-search">
+<div class="qa-search">
+<form method="get" action="http://www.wikidevs.com/search">
+<input type="text" name="q" value="" class="qa-search-field">
+<input type="submit" value="Search" class="qa-search-button">
+</form>
+</div>
+</div>
+<div class="qa-body-wrapper">
+<div class="qa-main-wrapper">
+<div class="qa-main">
+<h1>
+<a href="http://www.wikidevs.com/2389/using-angular-in-extension-on-page-that-already-uses-angular">
+<span class="entry-title">Using Angular in extension on a page that already uses angular</span>
+</a>
+</h1>
+<div class="qa-part-q-view">
+<div class="qa-q-view  hentry question" id="q2389">
+<form method="post" action="http://www.wikidevs.com/2389/using-angular-in-extension-on-page-that-already-uses-angular">
+<span class="qa-a-count">
+<span class="qa-a-count-data">923</span>
+<span class="qa-a-count-pad"> views</span>
+</span>
+<input type="hidden" name="code" value="0-1457909815-ae4bafaf5876239d8e4f24e90c6adf71403e0b41">
+</form>
+<div class="qa-q-view-main">
+<form method="post" action="http://www.wikidevs.com/2389/using-angular-in-extension-on-page-that-already-uses-angular">
+<span class="qa-q-view-avatar-meta">
+<span class="qa-q-view-meta">
+<a href="http://www.wikidevs.com/2389/using-angular-in-extension-on-page-that-already-uses-angular" class="qa-q-view-what">asked</a>
+<span class="qa-q-view-when">
+<span class="qa-q-view-when-data"><span class="published updated"><span class="value-title" title="2015-07-17T02:00:18+0000">Jul 16, 2015</span></span></span>
+</span>
+<span class="qa-q-view-who">
+<span class="qa-q-view-who-pad">by </span>
+<span class="qa-q-view-who-data">anonymous</span>
+</span>
+</span>
+</span>
+<div class="qa-q-view-content">
+<a name="2389"></a><div class="entry-content"><div class="post-text">
+<p>I'm writing a Chrome Extension (<a rel="nofollow" href="http://www.github.com/kentcdodds/genies-lamp">here</a>) for <a rel="nofollow" href="http://www.github.com/kentcdodds/genie">my library</a> that uses angular for <a rel="nofollow" href="http://www.github.com/kentcdodds/ux-genie">its UI</a>. It works great on pages that don't use angular, but it causes issues with pages that do have angular. For example, on the Angular docs page:</p>
+<pre><code>Uncaught Error: [$injector:modulerr] Failed to instantiate module docsApp due to:
+  Error: [$injector:nomod] Module 'docsApp' is not available! You either misspelled the module name or forgot to load it. If registering a module ensure that you specify the dependencies as the second argument.
+  <a href="http://errors.angularjs.org/1.2.7/$injector/nomod?p0=docsApp" rel="nofollow">http://errors.angularjs.org/1.2.7/$injector/nomod?p0=docsApp</a>
+at chrome-extension://cfgbockhpgdlmcdlcbfmflckllmdiljo/angular.js:78:14
+at chrome-extension://cfgbockhpgdlmcdlcbfmflckllmdiljo/angular.js:1528:19
+at ensure (chrome-extension://cfgbockhpgdlmcdlcbfmflckllmdiljo/angular.js:1453:40)
+at module (chrome-extension://cfgbockhpgdlmcdlcbfmflckllmdiljo/angular.js:1526:16)
+at chrome-extension://cfgbockhpgdlmcdlcbfmflckllmdiljo/angular.js:3616:24
+at Array.forEach (native)
+at forEach (chrome-extension://cfgbockhpgdlmcdlcbfmflckllmdiljo/angular.js:302:13)
+at loadModules (chrome-extension://cfgbockhpgdlmcdlcbfmflckllmdiljo/angular.js:3610:7)
+at createInjector (chrome-extension://cfgbockhpgdlmcdlcbfmflckllmdiljo/angular.js:3550:13)
+at doBootstrap (chrome-extension://cfgbockhpgdlmcdlcbfmflckllmdiljo/angular.js:1298:22)
+<a href="http://errors.angularjs.org/1.2.7/$injector/modulerr?p0=docsApp&amp;p1=Error%3A%E2%80%A6xtension%3A%2F%2Fcfgbockhpgdlmcdlcbfmflckllmdiljo%2Fangular.js%3A1298%3A22" rel="nofollow">http://errors.angularjs.org/1.2.7/$injector/modulerr?p0=docsApp&amp;p1=Error%3A…xtension%3A%2F%2Fcfgbockhpgdlmcdlcbfmflckllmdiljo%2Fangular.js%3A1298%3A22</a>) angular.js:78
+</code></pre>
+<p>The weird thing is that it seems to happen whether my extension actually <em>uses</em> angular or not. All I need to reproduce the issue is to include angular in my manifest.json as a <code>content_script</code> and this error is thrown. Any ideas of how I could make this work without messing up an angular site would be greatly appreciated.</p>
+<p>Like I said, it doesn't matter whether I actually use angular or not, but this is all I'm doing to use it:</p>
+<pre><code>makeWishForAnchors(); // This just loads the global genie object. I don't believe it's related.
+
+var lamp = '&lt;div class="genie-extension"&gt;&lt;div ux-lamp lamp-visible="genieVisible" rub-class="visible" local-storage="true"&gt;&lt;/div&gt;&lt;/div&gt;';
+$('body').append(lamp);
+
+angular.module('genie-extension', ['uxGenie']);
+angular.bootstrap($('.genie-extension')[0], ['genie-extension']);
+</code></pre>
+<p>Thanks!</p>
+</div></div>
+</div>
+<div class="qa-q-view-tags">
+<ul class="qa-q-view-tag-list">
+<li class="qa-q-view-tag-item"><a href="http://www.wikidevs.com/tag/javascript" rel="tag" class="qa-tag-link">javascript</a></li>
+<li class="qa-q-view-tag-item"><a href="http://www.wikidevs.com/tag/angularjs" rel="tag" class="qa-tag-link">angularjs</a></li>
+<li class="qa-q-view-tag-item"><a href="http://www.wikidevs.com/tag/google-chrome" rel="tag" class="qa-tag-link">google-chrome</a></li>
+<li class="qa-q-view-tag-item"><a href="http://www.wikidevs.com/tag/google-chrome-extension" rel="tag" class="qa-tag-link">google-chrome-extension</a></li>
+<li class="qa-q-view-tag-item"><a href="http://www.wikidevs.com/tag/question" rel="tag" class="qa-tag-link">question</a></li>
+</ul>
+</div>
+<div class="qa-q-view-buttons">
+<input name="q_doflag" onclick="qa_show_waiting_after(this, false);" value="flag" title="Flag this question as spam or inappropriate" type="submit" class="qa-form-light-button qa-form-light-button-flag">
+<input name="q_doanswer" id="q_doanswer" onclick="return qa_toggle_element(&#39;anew&#39;)" value="answer" title="Answer this question" type="submit" class="qa-form-light-button qa-form-light-button-answer">
+</div>
+<div class="qa-q-view-c-list" style="display:none;" id="c2389_list">
+</div>  
+<input type="hidden" name="code" value="0-1457909815-8dac2dc8b3f05cb4ae57767896bdedd7477e4057">
+<input type="hidden" name="qa_click" value="">
+</form>
+<div class="qa-c-form">
+</div>  
+</div>  
+<div class="qa-q-view-clear">
+</div>
+</div>  
+</div>
+<div class="qa-part-a-form">
+<div class="qa-a-form" id="anew" style="display:none;">
+<h2>Please <a href="http://www.wikidevs.com/login?to=2389%2Fusing-angular-in-extension-on-page-that-already-uses-angular">log in</a> or <a href="http://www.wikidevs.com/register?to=2389%2Fusing-angular-in-extension-on-page-that-already-uses-angular">register</a> to answer this question.</h2>
+</div>  
+</div>
+<div class="qa-part-a-list">
+<h2 id="a_list_title">2 Answers</h2>
+<div class="qa-a-list" id="a_list">
+<div class="qa-a-list-item  hentry answer" id="a2390">
+<form method="post" action="http://www.wikidevs.com/2389/using-angular-in-extension-on-page-that-already-uses-angular">
+<div class="qa-voting qa-voting-net" id="voting_2390">
+<div class="qa-vote-buttons qa-vote-buttons-net">
+<input title="Click to vote up" name="vote_2390_1_a2390" onclick="return qa_vote_click(this);" type="submit" value="+" class="qa-vote-first-button qa-vote-up-button">
+<input title="Click to vote down" name="vote_2390_-1_a2390" onclick="return qa_vote_click(this);" type="submit" value="–" class="qa-vote-second-button qa-vote-down-button">
+</div>
+<div class="qa-vote-count qa-vote-count-net">
+<span class="qa-netvote-count">
+<span class="qa-netvote-count-data">+311<span class="votes-up"><span class="value-title" title="311"></span></span><span class="votes-down"><span class="value-title" title="0"></span></span></span><span class="qa-netvote-count-pad"> votes</span>
+</span>
+</div>
+<div class="qa-vote-clear">
+</div>
+</div>
+<input type="hidden" name="code" value="0-1457909815-ae4bafaf5876239d8e4f24e90c6adf71403e0b41">
+</form>
+<div class="qa-a-item-main">
+<span class="qa-a-item-avatar-meta">
+<span class="qa-a-item-meta">
+<a href="http://www.wikidevs.com/2389/using-angular-in-extension-on-page-that-already-uses-angular?show=2390#a2390" class="qa-a-item-what">answered</a>
+<span class="qa-a-item-when">
+<span class="qa-a-item-when-data"><span class="published updated"><span class="value-title" title="2015-07-17T02:00:18+0000">Jul 16, 2015</span></span></span>
+</span>
+<span class="qa-a-item-who">
+<span class="qa-a-item-who-pad">by </span>
+<span class="qa-a-item-who-data">anonymous</span>
+</span>
+</span>
+</span>
+<form method="post" action="http://www.wikidevs.com/2389/using-angular-in-extension-on-page-that-already-uses-angular">
+<div class="qa-a-selection">
+</div>
+<div class="qa-a-item-content">
+<a name="2390"></a><div class="entry-content"><div class="post-text">
+<h3>The problem</h3>
+<p>As soon as Angular is injected, it parses the DOM looking for an element with the <code>ng-app</code> directive. If one is found Angular will bootstrap automatically. This becomes a problem when a page uses Angular itself, because (although they have separate JS execution contexts) the page and the content script share the same DOM.</p>
+<h3>The solution</h3>
+<p>You need to prevent <em>your</em> Angular instance (by "your" I mean the one injected by your extension as a content script) from automatically bootstrapping. Normally you would just omit the <code>ng-app</code> directive and you would be good to go, but since you do not have control over the original DOM (nor do you want to break the page's functionality) this is not an option.</p>
+<p>What you <strong>can</strong> do it use <strong><a href="http://docs.angularjs.org/guide/bootstrap#overview_manual-initialization" rel="nofollow">manual bootstrapping</a></strong> for your Angular app in conjunction with <strong><a href="http://docs.angularjs.org/guide/bootstrap#overview_deferred-bootstrap" rel="nofollow">deferred bootstrapping</a></strong> (to prevent your Angular from trying to automatically bootstrap the page's Angular app).</p>
+<p>At the same time, you need to "protect" (i.e. hide) your app's root element from the page's Angular instance. To achieve this, you can wrap your root element in a parent element with the <strong><a href="http://docs.angularjs.org/api/ng.directive:ngNonBindable" rel="nofollow">ngNonBindable</a></strong> directive, so the page's Angular instance will leave it alone.</p>
+<p>Summarizing the steps from the above docs, you need to do the following:</p>
+<ol>
+<li><p>Prepend <code>window.name</code> with <code>NG_DEFER_BOOTSTRAP!</code> prior to injecting your Angular.<br>
+E.g. inject a tiny script (before <code>angluar.js</code>) containing just one line: </p>
+<pre><code>window.name = 'NG_DEFER_BOOTSTRAP!' + window.name;
+</code></pre></li>
+<li><p>Wrap your app's root element in a parent element with the attribute <code>ng-non-bindable</code>:</p>
+<pre><code>var wrapper = ...    // &lt;div ng-non-bindable&gt;&lt;/div&gt;
+wrapper.appendChild(lamp);   // or whatever your root element is
+document.body.appendChild(wrapper);
+</code></pre></li>
+<li><p>In your app's main script, manually bootstrap your Angular app:</p>
+<pre><code>var appRoot = document.querySelector('#&lt;yourRootElemID');
+angular.bootstrap(appRoot, ['genie-extension']);
+</code></pre></li>
+</ol>
+<p><span style="text-decoration: line-through;"><sub>
+<strong>Fine print:</strong> I haven't tested it myself, but I promise to do so soon !
+</sub></span></p>
+<hr>
+<h3>UPDATE</h3>
+<p>The code below is intended as a proof of concept for the approach described above. Basically, it is a demo extension that loads an Angular-powered content-script into any <code>http:</code>/<code>https:</code> page whenever the browser-action button is clicked.</p>
+<p>The extension takes all necessary precautions in order not to interfere with (or get broken by) the page's own Angular instance (if any).</p>
+<p>Finally, I had to add a third requirement (see the updated solution description above) to protect/hide the content-script's Angular app from the page's Angular instance.<br>
+(I.e. I wrapped the root element in a parent element with the <strong><a href="http://docs.angularjs.org/api/ng.directive:ngNonBindable" rel="nofollow">ngNonBindable</a></strong> directive.)</p>
+<p><strong>manifest.json:</strong></p>
+<pre><code>{
+  "manifest_version": 2,
+  "name": "Test Extension",
+  "version": "0.0",
+
+  "background": {
+    "persistent": false,
+    "scripts": ["background.js"]
+  },
+
+  "browser_action": {
+    "default_title": "Test Extension"
+//    "default_icon": {
+//      "19": "img/icon19.png",
+//      "38": "img/icon38.png"
+//    },
+  },
+
+  "permissions": ["activeTab"]
+}
+</code></pre>
+<p><strong>background.js:</strong></p>
+<pre><code>// Inject our Angular app, taking care
+// not to interfere with page's Angular (if any)
+function injectAngular(tabId) {
+  // Prevent immediate automatic bootstrapping
+  chrome.tabs.executeScript(tabId, {
+    code: 'window.name = "NG_DEFER_BOOTSTRAP!" + window.name;'
+  }, function () {
+    // Inject AngularJS
+    chrome.tabs.executeScript(tabId, {
+      file: 'angular-1.2.7.min.js'
+    }, function () {
+      // Inject our app's script
+      chrome.tabs.executeScript(tabId, {file: 'content.js'});
+    });
+  });
+}
+
+// Call `injectAngular()` when the user clicks the browser-action button
+chrome.browserAction.onClicked.addListener(function (tab) {
+  injectAngular(tab.id);
+});
+</code></pre>
+<p><strong>content.js:</strong></p>
+<pre><code>// Create a non-bindable wrapper for the root element
+// to keep the page's Angular instance away
+var div = document.createElement('div');
+div.dataset.ngNonBindable = '';
+div.style.cssText = [
+  'background:  rgb(250, 150, 50);',
+  'bottom:      0px;',
+  'font-weight: bold;',
+  'position:    fixed;',
+  'text-align:  center;',
+  'width:       100%;',
+  ''].join('\n');
+
+// Create the app's root element (everything else should go in here)
+var appRoot = document.createElement('div');
+appRoot.dataset.ngController = 'MyCtrl as ctrl';
+appRoot.innerHTML = 'Angular says: {{ctrl.message}}';
+
+// Insert elements into the DOM
+document.body.appendChild(div);
+div.appendChild(appRoot);
+
+// Angular-specific code goes here (i.e. defining and configuring
+// modules, directives, services, filters, etc.)
+angular.
+  module('myApp', []).
+  controller('MyCtrl', function MyCtrl() {
+    this.message = 'Hello, isolated world !';
+  });
+
+/* Manually bootstrap the Angular app */
+window.name = '';   // To allow `bootstrap()` to continue normally
+angular.bootstrap(appRoot, ['myApp']);
+console.log('Boot and loaded !');
+</code></pre>
+<p><sub>
+<strong>Fine print:</strong><br>
+I have conducted some preliminary tests (with both Angular and non-Angular webpages) and everything seems to work as expected. Yet, I have by no means tested this approach thoroughly !
+</sub></p>
+<hr>
+<p>Should anyone be interested, <strong><a href="https://db.tt/UjZZ0A7R" rel="nofollow">this is what it took</a></strong> to "Angularize" Genie's lamp.</p>
+</div></div>
+</div>
+<div class="qa-a-item-buttons">
+<input name="a2390_doflag" onclick="return qa_answer_click(2390, 2389, this);" value="flag" title="Flag this answer as spam or inappropriate" type="submit" class="qa-form-light-button qa-form-light-button-flag">
+<input name="a2390_dofollow" value="ask related question" title="Ask a new question relating to this answer" type="submit" class="qa-form-light-button qa-form-light-button-follow">
+<input name="a2390_docomment" onclick="return qa_toggle_element(&#39;c2390&#39;)" value="comment" title="Add a comment on this answer" type="submit" class="qa-form-light-button qa-form-light-button-comment">
+</div>
+<div class="qa-a-item-c-list" style="display:none;" id="c2390_list">
+</div>  
+<input type="hidden" name="code" value="0-1457909815-c42cfb26a8040abb5619d8219178dbe1cd534f68">
+<input type="hidden" name="qa_click" value="">
+</form>
+<div class="qa-c-form" id="c2390" style="display:none;">
+<h2>Please <a href="http://www.wikidevs.com/login?to=2389%2Fusing-angular-in-extension-on-page-that-already-uses-angular">log in</a> or <a href="http://www.wikidevs.com/register?to=2389%2Fusing-angular-in-extension-on-page-that-already-uses-angular">register</a> to add a comment.</h2>
+</div>  
+</div>  
+<div class="qa-a-item-clear">
+</div>
+</div>  
+<div class="qa-a-list-item  hentry answer" id="a2391">
+<form method="post" action="http://www.wikidevs.com/2389/using-angular-in-extension-on-page-that-already-uses-angular">
+<div class="qa-voting qa-voting-net" id="voting_2391">
+<div class="qa-vote-buttons qa-vote-buttons-net">
+<input title="Click to vote up" name="vote_2391_1_a2391" onclick="return qa_vote_click(this);" type="submit" value="+" class="qa-vote-first-button qa-vote-up-button">
+<input title="Click to vote down" name="vote_2391_-1_a2391" onclick="return qa_vote_click(this);" type="submit" value="–" class="qa-vote-second-button qa-vote-down-button">
+</div>
+<div class="qa-vote-count qa-vote-count-net">
+<span class="qa-netvote-count">
+<span class="qa-netvote-count-data">+57<span class="votes-up"><span class="value-title" title="57"></span></span><span class="votes-down"><span class="value-title" title="0"></span></span></span><span class="qa-netvote-count-pad"> votes</span>
+</span>
+</div>
+<div class="qa-vote-clear">
+</div>
+</div>
+<input type="hidden" name="code" value="0-1457909815-ae4bafaf5876239d8e4f24e90c6adf71403e0b41">
+</form>
+<div class="qa-a-item-main">
+<span class="qa-a-item-avatar-meta">
+<span class="qa-a-item-meta">
+<a href="http://www.wikidevs.com/2389/using-angular-in-extension-on-page-that-already-uses-angular?show=2391#a2391" class="qa-a-item-what">answered</a>
+<span class="qa-a-item-when">
+<span class="qa-a-item-when-data"><span class="published updated"><span class="value-title" title="2015-07-17T02:00:19+0000">Jul 16, 2015</span></span></span>
+</span>
+<span class="qa-a-item-who">
+<span class="qa-a-item-who-pad">by </span>
+<span class="qa-a-item-who-data">anonymous</span>
+</span>
+</span>
+</span>
+<form method="post" action="http://www.wikidevs.com/2389/using-angular-in-extension-on-page-that-already-uses-angular">
+<div class="qa-a-selection">
+</div>
+<div class="qa-a-item-content">
+<a name="2391"></a><div class="entry-content"><div class="post-text">
+<p><a rel="nofollow" href="http://stackoverflow.com/a/21049890/930170">Answer</a> of @ExpertSystem is pretty cool. But there on more case with same error. If you define angular in <code>manifest.json</code> in content-script section, like below:</p>
+<pre><code>"content_scripts": [
+    {
+      "css": ["app.css"],
+      "js": [
+        "libs/jquery/dist/jquery.min.js",
+        "libs/angular/angular.min.js",
+        "content.js"
+      ],
+      "matches": ["\u003Call_urls\u003E"]
+    }
+  ],
+</code></pre>
+<p>You <strong>may</strong> faced this error (like I am)</p>
+</div></div>
+</div>
+<div class="qa-a-item-buttons">
+<input name="a2391_doflag" onclick="return qa_answer_click(2391, 2389, this);" value="flag" title="Flag this answer as spam or inappropriate" type="submit" class="qa-form-light-button qa-form-light-button-flag">
+<input name="a2391_dofollow" value="ask related question" title="Ask a new question relating to this answer" type="submit" class="qa-form-light-button qa-form-light-button-follow">
+<input name="a2391_docomment" onclick="return qa_toggle_element(&#39;c2391&#39;)" value="comment" title="Add a comment on this answer" type="submit" class="qa-form-light-button qa-form-light-button-comment">
+</div>
+<div class="qa-a-item-c-list" style="display:none;" id="c2391_list">
+</div>  
+<input type="hidden" name="code" value="0-1457909815-3073b4cb004ba28777d19eeb12947d94aec0ee30">
+<input type="hidden" name="qa_click" value="">
+</form>
+<div class="qa-c-form" id="c2391" style="display:none;">
+<h2>Please <a href="http://www.wikidevs.com/login?to=2389%2Fusing-angular-in-extension-on-page-that-already-uses-angular">log in</a> or <a href="http://www.wikidevs.com/register?to=2389%2Fusing-angular-in-extension-on-page-that-already-uses-angular">register</a> to add a comment.</h2>
+</div>  
+</div>  
+<div class="qa-a-item-clear">
+</div>
+</div>  
+</div>  
+</div>
+<div class="qa-widgets-main qa-widgets-main-bottom">
+<div class="qa-widget-main qa-widget-main-bottom">
+<h2>
+Related questions
+</h2>
+<form method="post" action="http://www.wikidevs.com/2389/using-angular-in-extension-on-page-that-already-uses-angular">
+<div class="qa-q-list">
+<div class="qa-q-list-item" id="q9845">
+<div class="qa-q-item-stats">
+<span class="qa-a-count">
+<span class="qa-a-count-data">6678</span>
+<span class="qa-a-count-pad"> views</span>
+</span>
+</div>
+<div class="qa-q-item-main">
+<div class="qa-q-item-title">
+<a href="http://www.wikidevs.com/9845/angular-method-chrome-extension-popup-page-popup-page-loaded">Call angular method in chrome extension popup page when popup page is loaded?</a>
+</div>
+<span class="qa-q-item-avatar-meta">
+<span class="qa-q-item-meta">
+<span class="qa-q-item-what">asked</span>
+<span class="qa-q-item-when">
+<span class="qa-q-item-when-data">Jul 17, 2015</span>
+</span>
+<span class="qa-q-item-who">
+<span class="qa-q-item-who-pad">by </span>
+<span class="qa-q-item-who-data">anonymous</span>
+</span>
+</span>
+</span>
+<div class="qa-q-item-tags">
+<ul class="qa-q-item-tag-list">
+<li class="qa-q-item-tag-item"><a href="http://www.wikidevs.com/tag/javascript" class="qa-tag-link">javascript</a></li>
+<li class="qa-q-item-tag-item"><a href="http://www.wikidevs.com/tag/html" class="qa-tag-link">html</a></li>
+<li class="qa-q-item-tag-item"><a href="http://www.wikidevs.com/tag/google-chrome-extension" class="qa-tag-link">google-chrome-extension</a></li>
+<li class="qa-q-item-tag-item"><a href="http://www.wikidevs.com/tag/angularjs" class="qa-tag-link">angularjs</a></li>
+<li class="qa-q-item-tag-item"><a href="http://www.wikidevs.com/tag/question" class="qa-tag-link">question</a></li>
+</ul>
+</div>
+</div>
+<div class="qa-q-item-clear">
+</div>
+</div>  
+<div class="qa-q-list-item" id="q329">
+<div class="qa-q-item-stats">
+<span class="qa-a-count">
+<span class="qa-a-count-data">3294</span>
+<span class="qa-a-count-pad"> views</span>
+</span>
+</div>
+<div class="qa-q-item-main">
+<div class="qa-q-item-title">
+<a href="http://www.wikidevs.com/329/angular-changes-urls-to-unsafe-in-extension-page">Angular changes urls to “unsafe:” in extension page</a>
+</div>
+<span class="qa-q-item-avatar-meta">
+<span class="qa-q-item-meta">
+<span class="qa-q-item-what">asked</span>
+<span class="qa-q-item-when">
+<span class="qa-q-item-when-data">Jul 16, 2015</span>
+</span>
+<span class="qa-q-item-who">
+<span class="qa-q-item-who-pad">by </span>
+<span class="qa-q-item-who-data">anonymous</span>
+</span>
+</span>
+</span>
+<div class="qa-q-item-tags">
+<ul class="qa-q-item-tag-list">
+<li class="qa-q-item-tag-item"><a href="http://www.wikidevs.com/tag/security" class="qa-tag-link">security</a></li>
+<li class="qa-q-item-tag-item"><a href="http://www.wikidevs.com/tag/google-chrome-extension" class="qa-tag-link">google-chrome-extension</a></li>
+<li class="qa-q-item-tag-item"><a href="http://www.wikidevs.com/tag/angularjs" class="qa-tag-link">angularjs</a></li>
+<li class="qa-q-item-tag-item"><a href="http://www.wikidevs.com/tag/question" class="qa-tag-link">question</a></li>
+</ul>
+</div>
+</div>
+<div class="qa-q-item-clear">
+</div>
+</div>  
+<div class="qa-q-list-item" id="q1804">
+<div class="qa-q-item-stats">
+<span class="qa-a-count">
+<span class="qa-a-count-data">6708</span>
+<span class="qa-a-count-pad"> views</span>
+</span>
+</div>
+<div class="qa-q-item-main">
+<div class="qa-q-item-title">
+<a href="http://www.wikidevs.com/1804/apply-angular-dom-element-chrome-extension-content-script">Apply Angular.js to new DOM Element in Chrome Extension Content Script</a>
+</div>
+<span class="qa-q-item-avatar-meta">
+<span class="qa-q-item-meta">
+<span class="qa-q-item-what">asked</span>
+<span class="qa-q-item-when">
+<span class="qa-q-item-when-data">Jul 16, 2015</span>
+</span>
+<span class="qa-q-item-who">
+<span class="qa-q-item-who-pad">by </span>
+<span class="qa-q-item-who-data">anonymous</span>
+</span>
+</span>
+</span>
+<div class="qa-q-item-tags">
+<ul class="qa-q-item-tag-list">
+<li class="qa-q-item-tag-item"><a href="http://www.wikidevs.com/tag/javascript" class="qa-tag-link">javascript</a></li>
+<li class="qa-q-item-tag-item"><a href="http://www.wikidevs.com/tag/google-chrome-extension" class="qa-tag-link">google-chrome-extension</a></li>
+<li class="qa-q-item-tag-item"><a href="http://www.wikidevs.com/tag/angularjs" class="qa-tag-link">angularjs</a></li>
+<li class="qa-q-item-tag-item"><a href="http://www.wikidevs.com/tag/question" class="qa-tag-link">question</a></li>
+</ul>
+</div>
+</div>
+<div class="qa-q-item-clear">
+</div>
+</div>  
+<div class="qa-q-list-item" id="q11002">
+<div class="qa-q-item-stats">
+<span class="qa-a-count">
+<span class="qa-a-count-data">2556</span>
+<span class="qa-a-count-pad"> views</span>
+</span>
+</div>
+<div class="qa-q-item-main">
+<div class="qa-q-item-title">
+<a href="http://www.wikidevs.com/11002/possible-use-angularjs-for-chrome-extensions-options-page">Possible to use AngularJS for a Chrome extension's options page?</a>
+</div>
+<span class="qa-q-item-avatar-meta">
+<span class="qa-q-item-meta">
+<span class="qa-q-item-what">asked</span>
+<span class="qa-q-item-when">
+<span class="qa-q-item-when-data">Jul 17, 2015</span>
+</span>
+<span class="qa-q-item-who">
+<span class="qa-q-item-who-pad">by </span>
+<span class="qa-q-item-who-data">anonymous</span>
+</span>
+</span>
+</span>
+<div class="qa-q-item-tags">
+<ul class="qa-q-item-tag-list">
+<li class="qa-q-item-tag-item"><a href="http://www.wikidevs.com/tag/javascript" class="qa-tag-link">javascript</a></li>
+<li class="qa-q-item-tag-item"><a href="http://www.wikidevs.com/tag/google-chrome" class="qa-tag-link">google-chrome</a></li>
+<li class="qa-q-item-tag-item"><a href="http://www.wikidevs.com/tag/google-chrome-extension" class="qa-tag-link">google-chrome-extension</a></li>
+<li class="qa-q-item-tag-item"><a href="http://www.wikidevs.com/tag/angularjs" class="qa-tag-link">angularjs</a></li>
+<li class="qa-q-item-tag-item"><a href="http://www.wikidevs.com/tag/question" class="qa-tag-link">question</a></li>
+</ul>
+</div>
+</div>
+<div class="qa-q-item-clear">
+</div>
+</div>  
+<div class="qa-q-list-item" id="q2180">
+<div class="qa-q-item-stats">
+<span class="qa-a-count">
+<span class="qa-a-count-data">6836</span>
+<span class="qa-a-count-pad"> views</span>
+</span>
+</div>
+<div class="qa-q-item-main">
+<div class="qa-q-item-title">
+<a href="http://www.wikidevs.com/2180/jquery-chrome-extension-content-script-older-version-already">How can I use jquery in a chrome extension content script when an older version is already on the page</a>
+</div>
+<span class="qa-q-item-avatar-meta">
+<span class="qa-q-item-meta">
+<span class="qa-q-item-what">asked</span>
+<span class="qa-q-item-when">
+<span class="qa-q-item-when-data">Jul 16, 2015</span>
+</span>
+<span class="qa-q-item-who">
+<span class="qa-q-item-who-pad">by </span>
+<span class="qa-q-item-who-data">anonymous</span>
+</span>
+</span>
+</span>
+<div class="qa-q-item-tags">
+<ul class="qa-q-item-tag-list">
+<li class="qa-q-item-tag-item"><a href="http://www.wikidevs.com/tag/javascript" class="qa-tag-link">javascript</a></li>
+<li class="qa-q-item-tag-item"><a href="http://www.wikidevs.com/tag/jquery" class="qa-tag-link">jquery</a></li>
+<li class="qa-q-item-tag-item"><a href="http://www.wikidevs.com/tag/google-chrome-extension" class="qa-tag-link">google-chrome-extension</a></li>
+<li class="qa-q-item-tag-item"><a href="http://www.wikidevs.com/tag/question" class="qa-tag-link">question</a></li>
+</ul>
+</div>
+</div>
+<div class="qa-q-item-clear">
+</div>
+</div>  
+</div>  
+<div class="qa-q-list-form">
+<input type="hidden" name="code" value="0-1457909815-ae4bafaf5876239d8e4f24e90c6adf71403e0b41">
+</div>
+</form>
+</div>
+</div>
+</div>  
+<div class="qa-sidepanel">
+<div class="qam-search turquoise ">
+<div class="qa-search">
+<form method="get" action="http://www.wikidevs.com/search">
+<input type="text" name="q" value="" class="qa-search-field">
+<input type="submit" value="Search" class="qa-search-button">
+</form>
+</div>
+</div>
+<div class="qa-sidebar wet-asphalt ">
+Welcome to Wikidevs Q&amp;A, where you can ask questions and receive answers from other members of the community.
+</div>
+<div class="qa-nav-cat">
+<ul class="qa-nav-cat-list qa-nav-cat-list-1">
+<li class="qa-nav-cat-item qa-nav-cat-all">
+<a href="http://www.wikidevs.com/" class="qa-nav-cat-link qa-nav-cat-selected">All categories</a>
+</li>
+<li class="qa-nav-cat-item qa-nav-cat-chrome">
+<a href="http://www.wikidevs.com/chrome" class="qa-nav-cat-link" title="Chrome Extension/Add-On">Chrome</a>
+<span class="qa-nav-cat-note">(131)</span>
+</li>
+<li class="qa-nav-cat-item qa-nav-cat-firefox">
+<a href="http://www.wikidevs.com/firefox" class="qa-nav-cat-link" title="FireFox Extension/Add-On">FireFox</a>
+<span class="qa-nav-cat-note">(87)</span>
+</li>
+<li class="qa-nav-cat-item qa-nav-cat-others">
+<a href="http://www.wikidevs.com/others" class="qa-nav-cat-link">others</a>
+<span class="qa-nav-cat-note">(26)</span>
+</li>
+</ul>
+<div class="qa-nav-cat-clear">
+</div>
+</div>
+<div class="qa-widgets-side qa-widgets-side-bottom">
+<div class="qa-widget-side qa-widget-side-bottom">
+<h2 style="margin-top: 0; padding-top: 0;">Most popular tags</h2>
+<div style="font-size: 10px;">
+<a href="http://www.wikidevs.com/tag/question" style="font-size: 24px; vertical-align: baseline;">question</a>
+<a href="http://www.wikidevs.com/tag/google-chrome-extension" style="font-size: 12px; vertical-align: baseline;">google-chrome-extension</a>
+<a href="http://www.wikidevs.com/tag/javascript" style="font-size: 11px; vertical-align: baseline;">javascript</a>
+<a href="http://www.wikidevs.com/tag/firefox-addon" style="font-size: 11px; vertical-align: baseline;">firefox-addon</a>
+<a href="http://www.wikidevs.com/tag/firefox" style="font-size: 8px; vertical-align: baseline;">firefox</a>
+<a href="http://www.wikidevs.com/tag/google-chrome" style="font-size: 8px; vertical-align: baseline;">google-chrome</a>
+<a href="http://www.wikidevs.com/tag/firefox-addon-sdk" style="font-size: 8px; vertical-align: baseline;">firefox-addon-sdk</a>
+<a href="http://www.wikidevs.com/tag/jquery" style="font-size: 8px; vertical-align: baseline;">jquery</a>
+<a href="http://www.wikidevs.com/tag/xul" style="font-size: 8px; vertical-align: baseline;">xul</a>
+<a href="http://www.wikidevs.com/tag/article" style="font-size: 8px; vertical-align: baseline;">article</a>
+<a href="http://www.wikidevs.com/tag/html" style="font-size: 8px; vertical-align: baseline;">html</a>
+<a href="http://www.wikidevs.com/tag/firefox-addons" style="font-size: 8px; vertical-align: baseline;">firefox-addons</a>
+<a href="http://www.wikidevs.com/tag/google-chrome-devtools" style="font-size: 8px; vertical-align: baseline;">google-chrome-devtools</a>
+<a href="http://www.wikidevs.com/tag/css" style="font-size: 8px; vertical-align: baseline;">css</a>
+<a href="http://www.wikidevs.com/tag/xpcom" style="font-size: 8px; vertical-align: baseline;">xpcom</a>
+<a href="http://www.wikidevs.com/tag/content-script" style="font-size: 8px; vertical-align: baseline;">content-script</a>
+<a href="http://www.wikidevs.com/tag/google-chrome-app" style="font-size: 8px; vertical-align: baseline;">google-chrome-app</a>
+<a href="http://www.wikidevs.com/tag/javascript-events" style="font-size: 8px; vertical-align: baseline;">javascript-events</a>
+<a href="http://www.wikidevs.com/tag/dom" style="font-size: 8px; vertical-align: baseline;">dom</a>
+<a href="http://www.wikidevs.com/tag/ajax" style="font-size: 8px; vertical-align: baseline;">ajax</a>
+<a href="http://www.wikidevs.com/tag/html5" style="font-size: 8px; vertical-align: baseline;">html5</a>
+<a href="http://www.wikidevs.com/tag/local-storage" style="font-size: 8px; vertical-align: baseline;">local-storage</a>
+<a href="http://www.wikidevs.com/tag/mozilla" style="font-size: 8px; vertical-align: baseline;">mozilla</a>
+<a href="http://www.wikidevs.com/tag/iframe" style="font-size: 8px; vertical-align: baseline;">iframe</a>
+<a href="http://www.wikidevs.com/tag/xmlhttprequest" style="font-size: 8px; vertical-align: baseline;">xmlhttprequest</a>
+<a href="http://www.wikidevs.com/tag/firebug" style="font-size: 8px; vertical-align: baseline;">firebug</a>
+<a href="http://www.wikidevs.com/tag/json" style="font-size: 8px; vertical-align: baseline;">json</a>
+<a href="http://www.wikidevs.com/tag/browser" style="font-size: 8px; vertical-align: baseline;">browser</a>
+<a href="http://www.wikidevs.com/tag/greasemonkey" style="font-size: 8px; vertical-align: baseline;">greasemonkey</a>
+<a href="http://www.wikidevs.com/tag/add-on" style="font-size: 8px; vertical-align: baseline;">add-on</a>
+<a href="http://www.wikidevs.com/tag/chrome-web-store" style="font-size: 8px; vertical-align: baseline;">chrome-web-store</a>
+<a href="http://www.wikidevs.com/tag/chromium" style="font-size: 8px; vertical-align: baseline;">chromium</a>
+<a href="http://www.wikidevs.com/tag/content-security-policy" style="font-size: 8px; vertical-align: baseline;">content-security-policy</a>
+<a href="http://www.wikidevs.com/tag/angularjs" style="font-size: 8px; vertical-align: baseline;">angularjs</a>
+<a href="http://www.wikidevs.com/tag/tabs" style="font-size: 8px; vertical-align: baseline;">tabs</a>
+<a href="http://www.wikidevs.com/tag/browser-extension" style="font-size: 8px; vertical-align: baseline;">browser-extension</a>
+<a href="http://www.wikidevs.com/tag/security" style="font-size: 8px; vertical-align: baseline;">security</a>
+<a href="http://www.wikidevs.com/tag/firefox-addon-restartless" style="font-size: 8px; vertical-align: baseline;">firefox-addon-restartless</a>
+<a href="http://www.wikidevs.com/tag/c%2B%2B" style="font-size: 8px; vertical-align: baseline;">c++</a>
+<a href="http://www.wikidevs.com/tag/gmail" style="font-size: 8px; vertical-align: baseline;">gmail</a>
+<a href="http://www.wikidevs.com/tag/cookies" style="font-size: 8px; vertical-align: baseline;">cookies</a>
+<a href="http://www.wikidevs.com/tag/debugging" style="font-size: 8px; vertical-align: baseline;">debugging</a>
+<a href="http://www.wikidevs.com/tag/android" style="font-size: 8px; vertical-align: baseline;">android</a>
+<a href="http://www.wikidevs.com/tag/facebook" style="font-size: 8px; vertical-align: baseline;">facebook</a>
+<a href="http://www.wikidevs.com/tag/chrome" style="font-size: 8px; vertical-align: baseline;">chrome</a>
+<a href="http://www.wikidevs.com/tag/python" style="font-size: 8px; vertical-align: baseline;">python</a>
+<a href="http://www.wikidevs.com/tag/events" style="font-size: 8px; vertical-align: baseline;">events</a>
+<a href="http://www.wikidevs.com/tag/extension" style="font-size: 8px; vertical-align: baseline;">extension</a>
+<a href="http://www.wikidevs.com/tag/npapi" style="font-size: 8px; vertical-align: baseline;">npapi</a>
+<a href="http://www.wikidevs.com/tag/userscripts" style="font-size: 8px; vertical-align: baseline;">userscripts</a>
+<a href="http://www.wikidevs.com/tag/http" style="font-size: 8px; vertical-align: baseline;">http</a>
+<a href="http://www.wikidevs.com/tag/selenium" style="font-size: 8px; vertical-align: baseline;">selenium</a>
+<a href="http://www.wikidevs.com/tag/cross-domain" style="font-size: 8px; vertical-align: baseline;">cross-domain</a>
+<a href="http://www.wikidevs.com/tag/plugins" style="font-size: 8px; vertical-align: baseline;">plugins</a>
+<a href="http://www.wikidevs.com/tag/jsctypes" style="font-size: 8px; vertical-align: baseline;">jsctypes</a>
+<a href="http://www.wikidevs.com/tag/xpi" style="font-size: 8px; vertical-align: baseline;">xpi</a>
+<a href="http://www.wikidevs.com/tag/java" style="font-size: 8px; vertical-align: baseline;">java</a>
+<a href="http://www.wikidevs.com/tag/sockets" style="font-size: 8px; vertical-align: baseline;">sockets</a>
+<a href="http://www.wikidevs.com/tag/manifest" style="font-size: 8px; vertical-align: baseline;">manifest</a>
+<a href="http://www.wikidevs.com/tag/firefox4" style="font-size: 8px; vertical-align: baseline;">firefox4</a>
+<a href="http://www.wikidevs.com/tag/download" style="font-size: 8px; vertical-align: baseline;">download</a>
+<a href="http://www.wikidevs.com/tag/safari-extension" style="font-size: 8px; vertical-align: baseline;">safari-extension</a>
+<a href="http://www.wikidevs.com/tag/api" style="font-size: 8px; vertical-align: baseline;">api</a>
+<a href="http://www.wikidevs.com/tag/chrome-extension" style="font-size: 8px; vertical-align: baseline;">chrome-extension</a>
+<a href="http://www.wikidevs.com/tag/osx" style="font-size: 8px; vertical-align: baseline;">osx</a>
+<a href="http://www.wikidevs.com/tag/oauth" style="font-size: 8px; vertical-align: baseline;">oauth</a>
+<a href="http://www.wikidevs.com/tag/post" style="font-size: 8px; vertical-align: baseline;">post</a>
+<a href="http://www.wikidevs.com/tag/fennec" style="font-size: 8px; vertical-align: baseline;">fennec</a>
+<a href="http://www.wikidevs.com/tag/xml" style="font-size: 8px; vertical-align: baseline;">xml</a>
+<a href="http://www.wikidevs.com/tag/google-analytics" style="font-size: 8px; vertical-align: baseline;">google-analytics</a>
+<a href="http://www.wikidevs.com/tag/php" style="font-size: 8px; vertical-align: baseline;">php</a>
+<a href="http://www.wikidevs.com/tag/youtube" style="font-size: 8px; vertical-align: baseline;">youtube</a>
+<a href="http://www.wikidevs.com/tag/toolbar" style="font-size: 8px; vertical-align: baseline;">toolbar</a>
+<a href="http://www.wikidevs.com/tag/contextmenu" style="font-size: 8px; vertical-align: baseline;">contextmenu</a>
+<a href="http://www.wikidevs.com/tag/popup" style="font-size: 8px; vertical-align: baseline;">popup</a>
+<a href="http://www.wikidevs.com/tag/url" style="font-size: 8px; vertical-align: baseline;">url</a>
+<a href="http://www.wikidevs.com/tag/oauth-2.0" style="font-size: 8px; vertical-align: baseline;">oauth-2.0</a>
+<a href="http://www.wikidevs.com/tag/websocket" style="font-size: 8px; vertical-align: baseline;">websocket</a>
+<a href="http://www.wikidevs.com/tag/http-headers" style="font-size: 8px; vertical-align: baseline;">http-headers</a>
+<a href="http://www.wikidevs.com/tag/c%23" style="font-size: 8px; vertical-align: baseline;">c#</a>
+<a href="http://www.wikidevs.com/tag/imacros" style="font-size: 8px; vertical-align: baseline;">imacros</a>
+<a href="http://www.wikidevs.com/tag/browser-plugin" style="font-size: 8px; vertical-align: baseline;">browser-plugin</a>
+<a href="http://www.wikidevs.com/tag/internet-explorer" style="font-size: 8px; vertical-align: baseline;">internet-explorer</a>
+<a href="http://www.wikidevs.com/tag/selenium-webdriver" style="font-size: 8px; vertical-align: baseline;">selenium-webdriver</a>
+<a href="http://www.wikidevs.com/tag/xulrunner" style="font-size: 8px; vertical-align: baseline;">xulrunner</a>
+<a href="http://www.wikidevs.com/tag/node.js" style="font-size: 8px; vertical-align: baseline;">node.js</a>
+<a href="http://www.wikidevs.com/tag/monetize" style="font-size: 8px; vertical-align: baseline;">monetize</a>
+<a href="http://www.wikidevs.com/tag/canvas" style="font-size: 8px; vertical-align: baseline;">canvas</a>
+<a href="http://www.wikidevs.com/tag/sqlite" style="font-size: 8px; vertical-align: baseline;">sqlite</a>
+<a href="http://www.wikidevs.com/tag/google-nativeclient" style="font-size: 8px; vertical-align: baseline;">google-nativeclient</a>
+<a href="http://www.wikidevs.com/tag/windows" style="font-size: 8px; vertical-align: baseline;">windows</a>
+<a href="http://www.wikidevs.com/tag/tool" style="font-size: 8px; vertical-align: baseline;">tool</a>
+<a href="http://www.wikidevs.com/tag/google-app-engine" style="font-size: 8px; vertical-align: baseline;">google-app-engine</a>
+<a href="http://www.wikidevs.com/tag/adblock" style="font-size: 8px; vertical-align: baseline;">adblock</a>
+<a href="http://www.wikidevs.com/tag/icons" style="font-size: 8px; vertical-align: baseline;">icons</a>
+<a href="http://www.wikidevs.com/tag/flash" style="font-size: 8px; vertical-align: baseline;">flash</a>
+<a href="http://www.wikidevs.com/tag/.net" style="font-size: 8px; vertical-align: baseline;">.net</a>
+<a href="http://www.wikidevs.com/tag/browser-addons" style="font-size: 8px; vertical-align: baseline;">browser-addons</a>
+<a href="http://www.wikidevs.com/tag/firefox-developer-tools" style="font-size: 8px; vertical-align: baseline;">firefox-developer-tools</a>
+<a href="http://www.wikidevs.com/tag/chrome-native-messaging" style="font-size: 8px; vertical-align: baseline;">chrome-native-messaging</a>
+</div>
+</div>
+</div>
+</div>
+</div>  
+</div>  
+<div class="qam-footer-box">
+<div class="qam-footer-row">
+</div>  
+<div class="qa-footer">
+<div class="qa-nav-footer">
+<ul class="qa-nav-footer-list">
+<li class="qa-nav-footer-item qa-nav-footer-feedback">
+<a href="http://www.wikidevs.com/feedback" class="qa-nav-footer-link">Send feedback</a>
+</li>
+</ul>
+<div class="qa-nav-footer-clear">
+</div>
+</div>
+<div class="qa-attribution">
+Snow Theme by <a href="http://www.q2amarket.com/">Q2A Market</a>
+</div>
+<div class="qa-attribution">
+Powered by <a href="http://www.question2answer.org/">Question2Answer</a>
+</div>
+<div class="qa-footer-clear">
+</div>
+</div>  
+</div>  
+<div style="position:absolute; left:-9999px; top:-9999px;">
+<span id="qa-waiting-template" class="qa-waiting">...</span>
+</div>
+
+ 
+
+<div style="bottom: 0px; font-weight: bold; position: fixed; text-align: center; width: 100%; background: rgb(250, 150, 50);">Angular says: {{ ctrl.message }}</div><div struck-directive=""></div></body></html>
