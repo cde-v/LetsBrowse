@@ -281,9 +281,6 @@ var app = app || {};
       setTimeout(function() { _dm.Highlighter.remove(id) }, 10);
     }
   });
-  /* End of Highlighter */
-
-  //export highlighter to root namespace
   app.Highlighter = Highlighter;
   var domSelector = {
     ignoreClasses: function(className) {
@@ -308,26 +305,19 @@ var app = app || {};
         node_id = $(realNode).attr("id");
         name = name.toLowerCase();
         if(node_id) {
-          // As soon as an id is found, there's no need to specify more.
           var id_selector = name + '#' + this.escapeJquerySpecials(node_id) + (path ? '>' + path : '');
-          // check this newly generated selector if not unique then traverse further
           var matches = $(id_selector);
           if(matches.length > 1) {
-            // path = id_selector;
           } else {
             return id_selector;
           }
         } else if(realNode.className) {
-          //name += '.' + realNode.className.split(/\s+/).join('.');
-          // check if any of the class is unique
           var classes = realNode.className.split(/\s+/);
           for(var cindex in classes) {
             if($.trim(classes[cindex]).length && !this.ignoreClasses(classes[cindex]) && $(name + "." + this.escapeJquerySpecials(classes[cindex])).length == 1) {
-              // if unique return that as root
               var classSelector = name + "." + this.escapeJquerySpecials(classes[cindex]) + (path ? '>' + path : '');
               var matches = $(classSelector);
               if(matches.length > 1) {
-                // path = id_selector;
               } else {
                 return classSelector;
               }
@@ -357,19 +347,13 @@ var app = app || {};
     getUniqueSelector: function(el) {
       el = $(el);
       var selector = this.getSelector(el);
-      // //console.log("selector", selector);
       var matched = $(selector);
-      if(matched.length > 1) {
-        //console.warn("Not unique");
-        // alert("Not unique");
-      } else {
-        if(matched[0] != el[0]) {
-          //console.warn("wrong selector el", el[0], " matched", matched[0]);
-          // alert("wrong selector");
-          //console.warn("wrong selector");
-        }
-      }
-      return selector;
+      // if(matched.length > 1) {
+      // } else {
+      //   if(matched[0] != el[0]) {
+      //   }
+      // }
+      // return selector;
     },
     getLastZindex: function() {
       var maxZ = Math.max.apply(null, $.map($('body > *'), function(e, n) {
@@ -379,7 +363,6 @@ var app = app || {};
       return maxZ;
     }
   };
-  //export highlighter to root namespace
   app.domSelector = domSelector;
   app.isStarted = false;
   app.elementSelected = false;
@@ -545,7 +528,6 @@ var app = app || {};
 
   app.showTooltip = function(selector, target) {
     var playerzIndex = this.domHigherIndex + 4;
-    // //console.log("Selected selector", selector, target);
     var position = 'most';
     var tooltip_content = "<div class='__root_tooltip_content'>";
     tooltip_content += "Selected Element Selector:<br/><div style='font-weight:bold;font-size:16px;border:1px solid #999;padding:5px;'>" + selector + "</div>";
@@ -593,14 +575,10 @@ var app = app || {};
     }
     this.isStarted = true;
     var self = this;
-    //init hightlighter here
     this.domHigherIndex = app.getLastZindex();
     var highlightZindex = this.domHigherIndex + 2;
     this.mine_highlighter = app.Highlighter.get('mine_highlighter', {
       type: 'frame',
-      // hole: true,
-      // allowEventsOnAllSides:true,
-      // cancelClick: true,
       className: 'mouse_over_highlighter',
       zIndex: highlightZindex,
       styles: {
@@ -632,11 +610,9 @@ var app = app || {};
         }
       }
     });
-
     $(document).bind("keydown.main", "shift+s", function(evt) {
       if(self.elementSelected == false) {
         evt.preventDefault();
-        //console.log("picker keydown selection");
         var target = $(self.mine_highlighter.overEl);
         self.showPickedSelector(target);
       };
@@ -660,22 +636,15 @@ var app = app || {};
         } else {
           self.mine_highlighter.hide();
           var target_el = document.elementFromPoint(evt.clientX, evt.clientY);
-          //console.log("***target",target_el, highlight_el.get(0));
           self.mine_highlighter.highlight();
           if(highlight_el.get(0) != target_el) {
             highlight_el = target_el;
           }
         }
-        //console.log("runtime highlighter options", highlight_options);
         self.mine_highlighter.highlight(highlight_el, highlight_options);
       }
     });
-    // click not added due to anchor
-    // if mousedown on anchor and mouseup on diffrent element the
-    // body click does not fired
-    // the hack is register our work on mouseup
     $(document).on("mouseup.main", function(evt) {
-      //console.log("document click", evt.target);
       if($(evt.target).hasClass('show_selected_highlighter')) {
         self.elementSelected = false;
         self.selectedElem = null;
