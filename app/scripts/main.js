@@ -1,9 +1,10 @@
 var app = app || {};
 (function($) {
+  app.taken = [];
   var Highlighter = (function() {
     var cache = {};
     return {
-      cache: cache, 
+      cache: cache,
       get: function(id, options) {
         if(cache[id]) {
           return cache[id];
@@ -96,13 +97,13 @@ var app = app || {};
       this.offCancelClick();
       $(document).on("mousedown.highlight", function(evt) {
         if(options.cancelClick) {
-          self.frame.center.css("pointer-events", "auto");
+          self.frame.center.css("pointer-events", "none");
         }
         if(options.cancelClickOnAllSides == true) {
-          self.frame.left.css("pointer-events", "auto");
-          self.frame.top.css("pointer-events", "auto");
-          self.frame.right.css("pointer-events", "auto");
-          self.frame.bottom.css("pointer-events", "auto");
+          self.frame.left.css("pointer-events", "none");
+          self.frame.top.css("pointer-events", "none");
+          self.frame.right.css("pointer-events", "none");
+          self.frame.bottom.css("pointer-events", "none");
         }
       });
       $(document).on("mouseup.highlight", function(evt) {
@@ -144,7 +145,7 @@ var app = app || {};
         }
       }
       if(this.overEl == null) {
-        return; 
+        return;
       }
 
       var self = this;
@@ -166,7 +167,7 @@ var app = app || {};
         }
 
         value.show();
-        value.css({ 'pointer-events': '' });
+        value.css({ 'pointer-events': 'none' });
         if(runtime_options.allowEventsOnAllSides == true || (key == 'center' && runtime_options.hole == true)) {
           value.css({ 'pointer-events': 'none' });
         }
@@ -236,7 +237,7 @@ var app = app || {};
           offset.top += iframeOffset.top;
           offset.left += iframeOffset.left;
         }
-        var dimensions = { height: element.outerHeight(), width: element.outerWidth() }; //element.get(0).getBoundingClientRect();//
+        var dimensions = { height: element.outerHeight(), width: element.outerWidth() };
 
         if(this.v_offset) {
           offset = { left: this.v_offset.left, top: this.v_offset.top };
@@ -307,8 +308,7 @@ var app = app || {};
         if(node_id) {
           var id_selector = name + '#' + this.escapeJquerySpecials(node_id) + (path ? '>' + path : '');
           var matches = $(id_selector);
-          if(matches.length > 1) {
-          } else {
+          if(matches.length > 1) {} else {
             return id_selector;
           }
         } else if(realNode.className) {
@@ -317,8 +317,7 @@ var app = app || {};
             if($.trim(classes[cindex]).length && !this.ignoreClasses(classes[cindex]) && $(name + "." + this.escapeJquerySpecials(classes[cindex])).length == 1) {
               var classSelector = name + "." + this.escapeJquerySpecials(classes[cindex]) + (path ? '>' + path : '');
               var matches = $(classSelector);
-              if(matches.length > 1) {
-              } else {
+              if(matches.length > 1) {} else {
                 return classSelector;
               }
             }
@@ -347,13 +346,13 @@ var app = app || {};
     getUniqueSelector: function(el) {
       el = $(el);
       var selector = this.getSelector(el);
-      var matched = $(selector);
+      // var matched = $(selector);
       // if(matched.length > 1) {
       // } else {
       //   if(matched[0] != el[0]) {
       //   }
       // }
-      // return selector;
+      return selector;
     },
     getLastZindex: function() {
       var maxZ = Math.max.apply(null, $.map($('body > *'), function(e, n) {
@@ -464,7 +463,8 @@ var app = app || {};
     this.selectedElem.el = target;
     this.mine_highlighter.hide();
     this.show_selected_highlighter.highlight(target);
-    this.showTooltip(selector, target);
+    // this.showTooltip(selector, target);
+    this.selector = selector;
   };
   app.hideTooltip = function(target) {
     $(".__root_tooltip_content").off("mousemove.parents");
@@ -526,36 +526,36 @@ var app = app || {};
     }
   };
 
-  app.showTooltip = function(selector, target) {
-    var playerzIndex = this.domHigherIndex + 4;
-    var position = 'most';
-    var tooltip_content = "<div class='__root_tooltip_content'>";
-    tooltip_content += "Selected Element Selector:<br/><div style='font-weight:bold;font-size:16px;border:1px solid #999;padding:5px;'>" + selector + "</div>";
-    var parentsList = this.getParentsListHtml(target);
-    tooltip_content += parentsList;
-    tooltip_content += "</div>";
-    $(target).ct(tooltip_content, {
-      trigger: 'none',
-      offsetParent: 'body',
-      clickAnywhereToClose: false,
-      wrapperzIndex: playerzIndex,
-      fill: '#FFF',
-      shrinkToFit: true,
-      cornerRadius: 10,
-      strokeWidth: 0,
-      shadow: true,
-      shadowOffsetX: 0,
-      shadowOffsetY: 0,
-      shadowBlur: 8,
-      shadowColor: 'rgba(0,0,0,.9)',
-      shadowOverlap: false,
-      noShadowOpts: { strokeStyle: '#999', strokeWidth: 2 },
-      positions: position
-    });
-    $(target).ctOn();
-    $(".__root_tooltip_content").on("mousemove.parents", this.handleParentMouseMove.bind(this));
-    $(".__root_tooltip_content").on("click.parents", this.handleParentClick.bind(this));
-  };
+  // app.showTooltip = function(selector, target) {
+  //   var playerzIndex = this.domHigherIndex + 4;
+  //   var position = 'most';
+  //   var tooltip_content = "<div class='__root_tooltip_content'>";
+  //   tooltip_content += "Selected Element Selector:<br/><div style='font-weight:bold;font-size:16px;border:1px solid #999;padding:5px;'>" + selector + "</div>";
+  //   var parentsList = this.getParentsListHtml(target);
+  //   tooltip_content += parentsList;
+  //   tooltip_content += "</div>";
+  //   $(target).ct(tooltip_content, {
+  //     trigger: 'none',
+  //     offsetParent: 'body',
+  //     clickAnywhereToClose: false,
+  //     wrapperzIndex: playerzIndex,
+  //     fill: '#FFF',
+  //     shrinkToFit: true,
+  //     cornerRadius: 10,
+  //     strokeWidth: 0,
+  //     shadow: true,
+  //     shadowOffsetX: 0,
+  //     shadowOffsetY: 0,
+  //     shadowBlur: 8,
+  //     shadowColor: 'rgba(0,0,0,.9)',
+  //     shadowOverlap: false,
+  //     noShadowOpts: { strokeStyle: '#999', strokeWidth: 2 },
+  //     positions: position
+  //   });
+  //   $(target).ctOn();
+  //   $(".__root_tooltip_content").on("mousemove.parents", this.handleParentMouseMove.bind(this));
+  //   $(".__root_tooltip_content").on("click.parents", this.handleParentClick.bind(this));
+  // };
 
   app.stopApp = function() {
     this.isStarted = false;
@@ -588,7 +588,8 @@ var app = app || {};
         },
         center: {
           backgroundColor: 'blue',
-          opacity: 0.1
+          opacity: 0.4,
+          'pointer-events': 'none'
         }
       }
     });
@@ -610,6 +611,7 @@ var app = app || {};
         }
       }
     });
+
     $(document).bind("keydown.main", "shift+s", function(evt) {
       if(self.elementSelected == false) {
         evt.preventDefault();
@@ -617,6 +619,7 @@ var app = app || {};
         self.showPickedSelector(target);
       };
     });
+
     $(document).on("mousemove.main", function(evt) {
       if(self.elementSelected == false) {
         var target = $(evt.target);
@@ -644,21 +647,28 @@ var app = app || {};
         self.mine_highlighter.highlight(highlight_el, highlight_options);
       }
     });
+
     $(document).on("mouseup.main", function(evt) {
-      if($(evt.target).hasClass('show_selected_highlighter')) {
-        self.elementSelected = false;
-        self.selectedElem = null;
-        self.mine_highlighter.highlight();
-        self.show_selected_highlighter.hide();
-        self.hideTooltip(self.show_selected_highlighter.overEl);
-        return false;
-      } else {
-        evt.preventDefault();
-        if($(evt.target).hasClass('mouse_over_highlighter')) {
-          var target = $(self.mine_highlighter.overEl);
-          self.showPickedSelector(target);
-        }
-      }
+      var target = $(evt.target);
+      target.empty();
+      app.taken.push(target.detach()[0].outerHTML);
+      console.log(app.taken);
+      $('#bottomBar').text(app.taken);
+
+      // if($(evt.target).hasClass('show_selected_highlighter')) {
+      //   self.elementSelected = false;
+      //   self.selectedElem = null;
+      //   self.mine_highlighter.highlight();
+      //   self.show_selected_highlighter.hide();
+      //   self.hideTooltip(self.show_selected_highlighter.overEl);
+      //   return false;
+      // } else {
+      //   evt.preventDefault();
+      //   if($(evt.target).hasClass('mouse_over_highlighter')) {
+      //     var target = $(self.mine_highlighter.overEl);
+      //     self.showPickedSelector(target);
+      //   }
+      // }
     });
   };
   app.startApp();

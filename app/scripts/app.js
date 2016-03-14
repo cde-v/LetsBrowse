@@ -15,8 +15,11 @@ body.appendChild(bottomBar);
 // struckDirective.setAttribute('struck-directive', '');
 // body.appendChild(struckDirective, body.firstChild);
 
+
 LB.controller('LetsBrowseCtrl', function($scope) {
+
   $scope.message = 'What\'s this?';
+  // var taken = app.getTaken();
 });
 
 LB.directive('struckDirective', function() {
